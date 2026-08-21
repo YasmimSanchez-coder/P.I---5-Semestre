@@ -1,4 +1,4 @@
-# Projeto Integrador ---5-Semestre
+# Projeto Integrador 5-Semestre
 
 1) Visão de produto
 Nome provisório: BeautyAgenda
