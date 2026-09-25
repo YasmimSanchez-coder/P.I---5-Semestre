@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # BeautyAgenda
 
 Aplicativo para agendamento de serviços em salões de beleza e barbearias.
