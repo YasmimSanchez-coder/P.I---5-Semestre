@@ -177,4 +177,4 @@ Nome provisório: BeautyAgenda
   -Funcionamento geral:
   -O usuário utiliza o aplicativo → o aplicativo envia as informações para a API → a API consulta ou altera os dados no banco de dados → o resultado retorna para o aplicativo.
   -Assim fica bem mais enxuto para entregar na atividade, mas ainda deixa claro o que o produto faz, o que será desenvolvido primeiro e como o sistema será estruturado.
->>>>>>> 539cc263e416cf953a812c0682ab1e62334596c1
+
