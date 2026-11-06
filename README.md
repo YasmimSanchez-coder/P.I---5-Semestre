@@ -1,5 +1,5 @@
 
-# BeautyAgenda
+# AGENDAÍ
 
 Aplicativo para agendamento de serviços em salões de beleza e barbearias.
 
