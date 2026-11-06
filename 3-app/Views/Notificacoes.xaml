@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgendAi.Views.Notificacoes"
+             BackgroundColor="{StaticResource Fundo}"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*" Padding="20,44,20,0" RowSpacing="14">
+
+        <VerticalStackLayout Spacing="14">
+            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                <Button Text="‹" Style="{StaticResource BotaoIcone}" Clicked="OnVoltarClicked" />
+
+                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                    <HorizontalStackLayout Spacing="8">
+                        <Label Text="Notificações" Style="{StaticResource TituloSerif}" FontSize="22" />
+                        <Border x:Name="ContadorBadge"
+                                IsVisible="False"
+                                VerticalOptions="Center"
+                                Padding="8,2"
+                                BackgroundColor="{StaticResource Dourado}"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 10">
+                            <Label x:Name="ContadorLabel"
+                                   FontSize="12"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource Fundo}" />
+                        </Border>
+                    </HorizontalStackLayout>
+                    <Label x:Name="ResumoLabel" Style="{StaticResource Suave}" />
+                </VerticalStackLayout>
+
+                <Label Grid.Column="2"
+                       Text="Marcar todas"
+                       Style="{StaticResource TextoDourado}"
+                       FontSize="13"
+                       VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnMarcarTodasTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+
+            <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                <HorizontalStackLayout x:Name="ChipsLayout" />
+            </ScrollView>
+        </VerticalStackLayout>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout x:Name="ListaHost" Spacing="10" Padding="0,0,0,24" />
+        </ScrollView>
+
+        <ActivityIndicator x:Name="Carregando"
+                           Grid.Row="1"
+                           IsRunning="False"
+                           IsVisible="False"
+                           Color="{StaticResource Dourado}"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+    </Grid>
+</ContentPage>

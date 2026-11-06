@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- ========== Cores ========== -->
+    <Color x:Key="Fundo">#0B0B0B</Color>
+    <Color x:Key="Superficie">#141414</Color>
+    <Color x:Key="SuperficieAlta">#1C1C1C</Color>
+    <Color x:Key="Borda">#2A2A2A</Color>
+    <Color x:Key="Dourado">#DDBA7E</Color>
+    <Color x:Key="DouradoEscuro">#B8935A</Color>
+    <Color x:Key="DouradoFundo">#2A2216</Color>
+    <Color x:Key="TextoClaro">#F2F2F2</Color>
+    <Color x:Key="TextoSuave">#9A9A9A</Color>
+    <Color x:Key="TextoMudo">#5C5C5C</Color>
+    <Color x:Key="Verde">#3DCB82</Color>
+    <Color x:Key="VerdeFundo">#0F2A1C</Color>
+    <Color x:Key="Roxo">#9A8CF7</Color>
+    <Color x:Key="RoxoFundo">#1C1833</Color>
+    <Color x:Key="Erro">#E5736B</Color>
+    <Color x:Key="ErroFundo">#2B1715</Color>
+
+    <!-- ========== Degradês ========== -->
+    <LinearGradientBrush x:Key="GradienteDourado" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#E6C990" Offset="0" />
+        <GradientStop Color="#C9A25F" Offset="1" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="GradienteHero" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#3A2E1A" Offset="0" />
+        <GradientStop Color="#141414" Offset="1" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="GradienteMapa" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#16261C" Offset="0" />
+        <GradientStop Color="#0E1511" Offset="1" />
+    </LinearGradientBrush>
+
+    <!-- ========== Fonte dos títulos (serifada, como no Figma) ========== -->
+    <OnPlatform x:Key="FonteTitulo" x:TypeArguments="x:String">
+        <On Platform="Android" Value="serif" />
+        <On Platform="WinUI" Value="Georgia" />
+    </OnPlatform>
+
+    <!-- ========== Textos ========== -->
+    <Style x:Key="TituloGrande" TargetType="Label">
+        <Setter Property="FontFamily" Value="{StaticResource FonteTitulo}" />
+        <Setter Property="FontSize" Value="34" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="{StaticResource TextoClaro}" />
+    </Style>
+
+    <Style x:Key="TituloSerif" TargetType="Label">
+        <Setter Property="FontFamily" Value="{StaticResource FonteTitulo}" />
+        <Setter Property="FontSize" Value="26" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="{StaticResource TextoClaro}" />
+    </Style>
+
+    <Style x:Key="TituloSecao" TargetType="Label">
+        <Setter Property="FontFamily" Value="{StaticResource FonteTitulo}" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="{StaticResource TextoClaro}" />
+    </Style>
+
+    <Style x:Key="TituloCartao" TargetType="Label">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="{StaticResource TextoClaro}" />
+    </Style>
+
+    <Style x:Key="Texto" TargetType="Label">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="TextColor" Value="{StaticResource TextoClaro}" />
+    </Style>
+
+    <Style x:Key="Suave" TargetType="Label">
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="TextColor" Value="{StaticResource TextoSuave}" />
+    </Style>
+
+    <Style x:Key="Micro" TargetType="Label">
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="TextColor" Value="{StaticResource TextoMudo}" />
+        <Setter Property="CharacterSpacing" Value="1" />
+    </Style>
+
+    <Style x:Key="TextoDourado" TargetType="Label">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="{StaticResource Dourado}" />
+    </Style>
+
+    <Style x:Key="TextoErro" TargetType="Label">
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="TextColor" Value="{StaticResource Erro}" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+    </Style>
+
+    <!-- ========== Contêineres ========== -->
+    <Style x:Key="CampoBorda" TargetType="Border">
+        <Setter Property="BackgroundColor" Value="{StaticResource Superficie}" />
+        <Setter Property="Stroke" Value="{StaticResource Borda}" />
+        <Setter Property="StrokeThickness" Value="1" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 14" />
+        <Setter Property="Padding" Value="14,0" />
+    </Style>
+
+    <Style x:Key="Cartao" TargetType="Border">
+        <Setter Property="BackgroundColor" Value="{StaticResource Superficie}" />
+        <Setter Property="Stroke" Value="{StaticResource Borda}" />
+        <Setter Property="StrokeThickness" Value="1" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 16" />
+        <Setter Property="Padding" Value="14" />
+    </Style>
+
+    <!-- ========== Campos ========== -->
+    <Style x:Key="Campo" TargetType="Entry">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{StaticResource TextoClaro}" />
+        <Setter Property="PlaceholderColor" Value="{StaticResource TextoMudo}" />
+        <Setter Property="FontSize" Value="14" />
+    </Style>
+
+    <Style x:Key="CampoData" TargetType="DatePicker">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{StaticResource TextoClaro}" />
+    </Style>
+
+    <Style x:Key="CampoHora" TargetType="TimePicker">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{StaticResource TextoClaro}" />
+    </Style>
+
+    <Style x:Key="CampoSeletor" TargetType="Picker">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{StaticResource TextoClaro}" />
+        <Setter Property="TitleColor" Value="{StaticResource TextoMudo}" />
+    </Style>
+
+    <!-- ========== Botões ========== -->
+    <Style x:Key="BotaoPrimario" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource GradienteDourado}" />
+        <Setter Property="TextColor" Value="#1A1409" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="CornerRadius" Value="14" />
+        <Setter Property="HeightRequest" Value="52" />
+    </Style>
+
+    <Style x:Key="BotaoDesativado" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource SuperficieAlta}" />
+        <Setter Property="TextColor" Value="{StaticResource TextoMudo}" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="CornerRadius" Value="14" />
+        <Setter Property="HeightRequest" Value="52" />
+    </Style>
+
+    <Style x:Key="BotaoSecundario" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource SuperficieAlta}" />
+        <Setter Property="TextColor" Value="{StaticResource TextoClaro}" />
+        <Setter Property="BorderColor" Value="{StaticResource Borda}" />
+        <Setter Property="BorderWidth" Value="1" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="HeightRequest" Value="40" />
+    </Style>
+
+    <Style x:Key="BotaoContorno" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource DouradoFundo}" />
+        <Setter Property="TextColor" Value="{StaticResource Dourado}" />
+        <Setter Property="BorderColor" Value="{StaticResource DouradoEscuro}" />
+        <Setter Property="BorderWidth" Value="1" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="HeightRequest" Value="40" />
+    </Style>
+
+    <Style x:Key="BotaoIcone" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource Superficie}" />
+        <Setter Property="TextColor" Value="{StaticResource Dourado}" />
+        <Setter Property="BorderColor" Value="{StaticResource Borda}" />
+        <Setter Property="BorderWidth" Value="1" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="WidthRequest" Value="40" />
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="Padding" Value="0" />
+    </Style>
+
+</ResourceDictionary>

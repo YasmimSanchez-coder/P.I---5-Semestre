@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgendAi.Views.Login"
+             BackgroundColor="{StaticResource Fundo}"
+             Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="28,56,28,32" Spacing="10">
+
+            <Image Source="logo.png"
+                   WidthRequest="140"
+                   HeightRequest="140"
+                   HorizontalOptions="Center"
+                   Aspect="AspectFit"
+                   Margin="0,0,0,10" />
+
+            <Label Style="{StaticResource TituloGrande}" HorizontalOptions="Center" Margin="0,10,0,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Agend" />
+                        <Span Text="Aí" TextColor="{StaticResource Dourado}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label Text="SEU HORÁRIO, SEM COMPLICAÇÃO"
+                   Style="{StaticResource Micro}"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,22" />
+
+            <!-- Abas Entrar / Cadastrar -->
+            <Border Style="{StaticResource CampoBorda}" Padding="4">
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="4">
+                    <Button x:Name="EntrarTab"
+                            Text="Entrar"
+                            FontSize="13"
+                            FontAttributes="Bold"
+                            CornerRadius="10"
+                            HeightRequest="40"
+                            BorderWidth="1"
+                            Clicked="OnEntrarTabClicked" />
+                    <Button x:Name="CadastrarTab"
+                            Grid.Column="1"
+                            Text="Cadastrar"
+                            FontSize="13"
+                            FontAttributes="Bold"
+                            CornerRadius="10"
+                            HeightRequest="40"
+                            BorderWidth="1"
+                            Clicked="OnCadastrarTabClicked" />
+                </Grid>
+            </Border>
+
+            <!-- Campos que só existem no cadastro -->
+            <VerticalStackLayout x:Name="CamposCadastro" IsVisible="False" Spacing="6" Margin="0,8,0,0">
+                <Label Text="NOME" Style="{StaticResource Micro}" />
+                <Border Style="{StaticResource CampoBorda}">
+                    <Entry x:Name="NomeEntry" Style="{StaticResource Campo}" Placeholder="Seu nome completo" />
+                </Border>
+                <Label Text="CELULAR (OPCIONAL)" Style="{StaticResource Micro}" Margin="0,6,0,0" />
+                <Border Style="{StaticResource CampoBorda}">
+                    <Entry x:Name="TelefoneEntry" Style="{StaticResource Campo}" Placeholder="(11) 99999-9999" Keyboard="Telephone" />
+                </Border>
+            </VerticalStackLayout>
+
+            <Label Text="E-MAIL" Style="{StaticResource Micro}" Margin="0,8,0,0" />
+            <Border Style="{StaticResource CampoBorda}">
+                <Entry x:Name="EmailEntry"
+                       Style="{StaticResource Campo}"
+                       Placeholder="seu@email.com"
+                       Keyboard="Email"
+                       ReturnType="Next" />
+            </Border>
+
+            <Label Text="SENHA" Style="{StaticResource Micro}" Margin="0,6,0,0" />
+            <Border Style="{StaticResource CampoBorda}">
+                <Grid ColumnDefinitions="*,Auto">
+                    <Entry x:Name="SenhaEntry"
+                           Style="{StaticResource Campo}"
+                           Placeholder="••••••••"
+                           IsPassword="True"
+                           ReturnType="Done"
+                           Completed="OnAcaoClicked" />
+                    <Label Grid.Column="1"
+                           Text="👁"
+                           FontSize="16"
+                           TextColor="{StaticResource TextoSuave}"
+                           VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnMostrarSenhaTapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+            </Border>
+
+            <VerticalStackLayout x:Name="CampoConfirmar" IsVisible="False" Spacing="6" Margin="0,6,0,0">
+                <Label Text="CONFIRMAR SENHA" Style="{StaticResource Micro}" />
+                <Border Style="{StaticResource CampoBorda}">
+                    <Entry x:Name="ConfirmarSenhaEntry"
+                           Style="{StaticResource Campo}"
+                           Placeholder="••••••••"
+                           IsPassword="True"
+                           ReturnType="Done"
+                           Completed="OnAcaoClicked" />
+                </Border>
+            </VerticalStackLayout>
+
+            <Label x:Name="ErroLabel" Style="{StaticResource TextoErro}" IsVisible="False" Margin="0,6,0,0" />
+
+            <Button x:Name="AcaoButton"
+                    Text="Entrar na Conta"
+                    Style="{StaticResource BotaoPrimario}"
+                    Margin="0,14,0,0"
+                    Clicked="OnAcaoClicked" />
+
+            <ActivityIndicator x:Name="Carregando"
+                               IsRunning="False"
+                               IsVisible="False"
+                               Color="{StaticResource Dourado}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

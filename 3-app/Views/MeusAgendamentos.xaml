@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgendAi.Views.MeusAgendamentos"
+             BackgroundColor="{StaticResource Fundo}"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*" Padding="20,44,20,0" RowSpacing="14">
+
+        <VerticalStackLayout Spacing="14">
+            <VerticalStackLayout>
+                <Label Text="Meus Agendamentos" Style="{StaticResource TituloSerif}" />
+                <Label x:Name="TotalLabel" Style="{StaticResource Suave}" />
+            </VerticalStackLayout>
+
+            <Border Style="{StaticResource CampoBorda}" Padding="4">
+                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="4">
+                    <Button x:Name="TodosTab" Text="Todos" Clicked="OnTodosClicked"
+                            FontSize="13" FontAttributes="Bold" CornerRadius="10" HeightRequest="38" BorderWidth="1" />
+                    <Button x:Name="ProximosTab" Grid.Column="1" Text="Próximos" Clicked="OnProximosClicked"
+                            FontSize="13" FontAttributes="Bold" CornerRadius="10" HeightRequest="38" BorderWidth="1" />
+                    <Button x:Name="HistoricoTab" Grid.Column="2" Text="Histórico" Clicked="OnHistoricoClicked"
+                            FontSize="13" FontAttributes="Bold" CornerRadius="10" HeightRequest="38" BorderWidth="1" />
+                </Grid>
+            </Border>
+        </VerticalStackLayout>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout x:Name="ListaHost" Spacing="12" Padding="0,0,0,24" />
+        </ScrollView>
+
+        <ActivityIndicator x:Name="Carregando"
+                           Grid.Row="1"
+                           IsRunning="False"
+                           IsVisible="False"
+                           Color="{StaticResource Dourado}"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+    </Grid>
+</ContentPage>

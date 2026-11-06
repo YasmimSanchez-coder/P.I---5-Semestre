@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:AgendAi.Models"
+             x:Class="AgendAi.Views.Home"
+             BackgroundColor="{StaticResource Fundo}"
+             Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20,44,20,24" Spacing="16">
+
+            <!-- Cabeçalho -->
+            <Grid ColumnDefinitions="*,Auto,Auto">
+                <VerticalStackLayout VerticalOptions="Center">
+                    <Label x:Name="SaudacaoLabel" Style="{StaticResource Suave}" />
+                    <Label Text="Descobrir Salões" Style="{StaticResource TituloSerif}" />
+                </VerticalStackLayout>
+
+                <Grid Grid.Column="1" WidthRequest="44" HeightRequest="44" VerticalOptions="Center">
+                    <Button Text="🔔" Style="{StaticResource BotaoIcone}" Clicked="OnNotificacoesClicked" />
+                    <Border x:Name="BadgeNotificacoes"
+                            IsVisible="False"
+                            InputTransparent="True"
+                            HorizontalOptions="End"
+                            VerticalOptions="Start"
+                            Padding="5,1"
+                            BackgroundColor="{StaticResource Dourado}"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 8">
+                        <Label x:Name="BadgeLabel"
+                               FontSize="10"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource Fundo}" />
+                    </Border>
+                </Grid>
+
+                <Border Grid.Column="2"
+                        WidthRequest="44"
+                        HeightRequest="44"
+                        Margin="10,0,0,0"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 22"
+                        Background="{StaticResource GradienteDourado}"
+                        VerticalOptions="Center">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnAvatarTapped" />
+                    </Border.GestureRecognizers>
+                    <Label x:Name="AvatarLabel"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource Fundo}"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+                </Border>
+            </Grid>
+
+            <!-- Busca -->
+            <Border Style="{StaticResource CampoBorda}">
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8">
+                    <Label Text="🔍" FontSize="14" VerticalOptions="Center" TextColor="{StaticResource TextoSuave}" />
+                    <Entry x:Name="BuscaEntry"
+                           Grid.Column="1"
+                           Style="{StaticResource Campo}"
+                           Placeholder="Buscar salão, serviço..."
+                           ReturnType="Search"
+                           Completed="OnBuscar" />
+                </Grid>
+            </Border>
+
+            <!-- Categorias -->
+            <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                <HorizontalStackLayout x:Name="ChipsLayout" />
+            </ScrollView>
+
+            <!-- Mapa -->
+            <Border HeightRequest="150"
+                    Padding="0"
+                    StrokeShape="RoundRectangle 18"
+                    Stroke="{StaticResource Borda}"
+                    StrokeThickness="1"
+                    Background="{StaticResource GradienteMapa}">
+                <Grid>
+                    <AbsoluteLayout x:Name="PinsLayout" />
+                    <Border HorizontalOptions="Start"
+                            VerticalOptions="Start"
+                            Margin="12"
+                            Padding="10,6"
+                            BackgroundColor="{StaticResource DouradoFundo}"
+                            Stroke="{StaticResource DouradoEscuro}"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 10">
+                        <Label x:Name="MapaResumoLabel" FontSize="12" TextColor="{StaticResource Dourado}" />
+                    </Border>
+                    <Button Text="Mapa completo"
+                            Style="{StaticResource BotaoSecundario}"
+                            HeightRequest="34"
+                            FontSize="12"
+                            HorizontalOptions="End"
+                            VerticalOptions="End"
+                            Margin="12"
+                            Clicked="OnMapaCompletoClicked" />
+                </Grid>
+            </Border>
+
+            <!-- Em destaque -->
+            <Grid ColumnDefinitions="*,Auto">
+                <Label x:Name="TituloListaLabel" Text="Em Destaque" Style="{StaticResource TituloSecao}" />
+                <Label Grid.Column="1" Text="Ver todos" Style="{StaticResource TextoDourado}" FontSize="13">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnVerTodosTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+
+            <Label x:Name="MensagemLabel" Style="{StaticResource Suave}" IsVisible="False" />
+
+            <CollectionView x:Name="Lista"
+                            HeightRequest="250"
+                            ItemsLayout="HorizontalList"
+                            HorizontalScrollBarVisibility="Never">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Estabelecimento">
+                        <Border Style="{StaticResource Cartao}"
+                                Padding="0"
+                                WidthRequest="200"
+                                Margin="0,0,12,0"
+                                StrokeShape="RoundRectangle 18">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnEstabelecimentoTapped" />
+                            </Border.GestureRecognizers>
+                            <VerticalStackLayout>
+                                <Grid HeightRequest="130" Background="{StaticResource GradienteHero}">
+                                    <Label Text="{Binding Inicial}"
+                                           Style="{StaticResource TituloGrande}"
+                                           FontSize="56"
+                                           TextColor="{StaticResource DouradoEscuro}"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                                    <Border HorizontalOptions="End"
+                                            VerticalOptions="Start"
+                                            Margin="10"
+                                            Padding="8,3"
+                                            BackgroundColor="#CC000000"
+                                            StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 10">
+                                        <Label Text="{Binding NotaTexto}"
+                                               FontSize="12"
+                                               FontAttributes="Bold"
+                                               TextColor="{StaticResource Dourado}" />
+                                    </Border>
+                                </Grid>
+                                <VerticalStackLayout Padding="12" Spacing="3">
+                                    <Label Text="{Binding Nome}"
+                                           Style="{StaticResource TituloCartao}"
+                                           LineBreakMode="TailTruncation"
+                                           MaxLines="1" />
+                                    <Label Text="{Binding DistanciaOuEndereco}"
+                                           Style="{StaticResource Suave}"
+                                           LineBreakMode="TailTruncation"
+                                           MaxLines="1" />
+                                    <Label Text="{Binding PrecoMinimoTexto}" Style="{StaticResource TextoDourado}" />
+                                </VerticalStackLayout>
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <ActivityIndicator x:Name="Carregando"
+                               IsRunning="False"
+                               IsVisible="False"
+                               Color="{StaticResource Dourado}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

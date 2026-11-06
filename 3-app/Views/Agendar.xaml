@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controles="clr-namespace:AgendAi.Controles"
+             x:Class="AgendAi.Views.Agendar"
+             BackgroundColor="{StaticResource Fundo}"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="*,Auto">
+
+        <ScrollView>
+            <VerticalStackLayout Padding="20,44,20,24" Spacing="18">
+
+                <!-- Cabeçalho -->
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                    <Button Text="‹"
+                            Style="{StaticResource BotaoIcone}"
+                            VerticalOptions="Start"
+                            Clicked="OnVoltarClicked" />
+                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                        <Label x:Name="TituloLabel" Style="{StaticResource TituloSerif}" FontSize="22" />
+                        <Label x:Name="SubtituloLabel"
+                               Style="{StaticResource Suave}"
+                               LineBreakMode="TailTruncation"
+                               MaxLines="1" />
+                    </VerticalStackLayout>
+                </Grid>
+
+                <!-- Passos -->
+                <VerticalStackLayout Spacing="8">
+                    <Grid x:Name="StepperHost"
+                          ColumnDefinitions="Auto,*,Auto,*,Auto"
+                          ColumnSpacing="8" />
+                    <Label x:Name="PassoLegendaLabel" Style="{StaticResource Micro}" />
+                </VerticalStackLayout>
+
+                <!-- 1. Serviço -->
+                <VerticalStackLayout x:Name="SecaoServico" Spacing="10">
+                    <Label Text="SERVIÇO" Style="{StaticResource Micro}" />
+                    <VerticalStackLayout x:Name="ServicoHost" Spacing="10" />
+                </VerticalStackLayout>
+
+                <!-- 2. Profissional -->
+                <VerticalStackLayout x:Name="SecaoProfissional" IsVisible="False" Spacing="10">
+                    <Label Text="PROFISSIONAL" Style="{StaticResource Micro}" />
+                    <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                        <HorizontalStackLayout x:Name="ProfissionaisHost" />
+                    </ScrollView>
+                </VerticalStackLayout>
+
+                <!-- 3. Data e hora -->
+                <VerticalStackLayout x:Name="SecaoDataHora" IsVisible="False" Spacing="14">
+                    <controles:SeletorSemana x:Name="Semana" />
+                    <Label Text="Horários Disponíveis" Style="{StaticResource TituloSecao}" FontSize="16" />
+                    <Grid x:Name="HorariosGrid" ColumnDefinitions="*,*,*" ColumnSpacing="8" RowSpacing="8" />
+                    <Label x:Name="MensagemHorariosLabel" Style="{StaticResource Suave}" />
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <VerticalStackLayout Grid.Row="1" Padding="20,12,20,16" BackgroundColor="{StaticResource Fundo}" Spacing="8">
+            <Button x:Name="ConfirmarButton"
+                    Text="Selecione um horário"
+                    Style="{StaticResource BotaoDesativado}"
+                    IsEnabled="False"
+                    Clicked="OnConfirmarClicked" />
+            <ActivityIndicator x:Name="Carregando"
+                               IsRunning="False"
+                               IsVisible="False"
+                               Color="{StaticResource Dourado}" />
+        </VerticalStackLayout>
+
+    </Grid>
+</ContentPage>

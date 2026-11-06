@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controles="clr-namespace:AgendAi.Controles"
+             x:Class="AgendAi.Views.AgendaProfissional"
+             BackgroundColor="{StaticResource Fundo}"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="*,Auto">
+
+        <ScrollView>
+            <VerticalStackLayout Padding="20,44,20,24" Spacing="16">
+
+                <VerticalStackLayout>
+                    <Label Text="Agenda Profissional" Style="{StaticResource TituloSerif}" />
+                    <Label x:Name="SubtituloLabel" Style="{StaticResource Suave}" />
+                </VerticalStackLayout>
+
+                <!-- Números do dia -->
+                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
+                    <Border Style="{StaticResource Cartao}" Padding="12">
+                        <VerticalStackLayout Spacing="2">
+                            <Label x:Name="AgendamentosLabel" Style="{StaticResource TituloSerif}" FontSize="22" TextColor="{StaticResource Dourado}" />
+                            <Label Text="agendamentos" Style="{StaticResource Suave}" FontSize="11" />
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Column="1" Style="{StaticResource Cartao}" Padding="12">
+                        <VerticalStackLayout Spacing="2">
+                            <Label x:Name="ReceitaLabel" Style="{StaticResource TituloSerif}" FontSize="22" TextColor="{StaticResource Dourado}" />
+                            <Label Text="projetado" Style="{StaticResource Suave}" FontSize="11" />
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Column="2" Style="{StaticResource Cartao}" Padding="12">
+                        <VerticalStackLayout Spacing="2">
+                            <Label x:Name="OcupacaoLabel" Style="{StaticResource TituloSerif}" FontSize="22" TextColor="{StaticResource Dourado}" />
+                            <Label Text="do dia" Style="{StaticResource Suave}" FontSize="11" />
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+
+                <controles:SeletorSemana x:Name="Semana" PermitirPassado="True" />
+
+                <VerticalStackLayout x:Name="LinhaDoTempoHost" Spacing="10" />
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <VerticalStackLayout Grid.Row="1" Padding="20,10,20,16" BackgroundColor="{StaticResource Fundo}">
+            <Button Text="+  Adicionar Horário Bloqueado"
+                    Style="{StaticResource BotaoContorno}"
+                    HeightRequest="50"
+                    Clicked="OnBloquearClicked" />
+        </VerticalStackLayout>
+
+        <ActivityIndicator x:Name="Carregando"
+                           IsRunning="False"
+                           IsVisible="False"
+                           Color="{StaticResource Dourado}"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+    </Grid>
+</ContentPage>

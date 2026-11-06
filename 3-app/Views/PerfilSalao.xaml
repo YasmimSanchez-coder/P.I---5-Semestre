@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgendAi.Views.PerfilSalao"
+             BackgroundColor="{StaticResource Fundo}"
+             Shell.NavBarIsVisible="False">
+
+    <Grid>
+        <ScrollView x:Name="Conteudo" IsVisible="False">
+            <VerticalStackLayout Spacing="0">
+
+                <!-- Capa -->
+                <Grid HeightRequest="250" Background="{StaticResource GradienteHero}">
+                    <Label x:Name="InicialLabel"
+                           Style="{StaticResource TituloGrande}"
+                           FontSize="110"
+                           TextColor="{StaticResource DouradoEscuro}"
+                           Opacity="0.35"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+
+                    <Button Text="‹"
+                            Style="{StaticResource BotaoIcone}"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start"
+                            Margin="16,40,0,0"
+                            Clicked="OnVoltarClicked" />
+
+                    <VerticalStackLayout VerticalOptions="End" Padding="20,0,20,18" Spacing="8">
+                        <Border x:Name="DestaqueBadge"
+                                IsVisible="False"
+                                HorizontalOptions="Start"
+                                Padding="10,4"
+                                BackgroundColor="{StaticResource Dourado}"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 8">
+                            <Label Text="DESTAQUE"
+                                   FontSize="10"
+                                   FontAttributes="Bold"
+                                   CharacterSpacing="1"
+                                   TextColor="{StaticResource Fundo}" />
+                        </Border>
+                        <Label x:Name="NomeLabel" Style="{StaticResource TituloSerif}" FontSize="30" />
+                    </VerticalStackLayout>
+                </Grid>
+
+                <!-- Nota, distância, aberto/fechado e botão Agendar -->
+                <Grid ColumnDefinitions="*,*,*,Auto" ColumnSpacing="8" Padding="20,16">
+                    <VerticalStackLayout Spacing="2">
+                        <Label x:Name="NotaLabel" Style="{StaticResource TituloSecao}" TextColor="{StaticResource Dourado}" />
+                        <Label x:Name="NotaLegendaLabel" Style="{StaticResource Suave}" FontSize="11" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Grid.Column="1" Spacing="2">
+                        <Label x:Name="DistanciaLabel" Style="{StaticResource TituloSecao}" />
+                        <Label x:Name="DistanciaLegendaLabel" Style="{StaticResource Suave}" FontSize="11" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Grid.Column="2" Spacing="2">
+                        <Label x:Name="StatusLabel" Style="{StaticResource TituloSecao}" />
+                        <Label x:Name="StatusLegendaLabel" Style="{StaticResource Suave}" FontSize="11" />
+                    </VerticalStackLayout>
+                    <Button Grid.Column="3"
+                            Text="Agendar"
+                            Style="{StaticResource BotaoPrimario}"
+                            HeightRequest="44"
+                            WidthRequest="104"
+                            VerticalOptions="Center"
+                            Clicked="OnAgendarClicked" />
+                </Grid>
+
+                <!-- Descrição, endereço e contatos -->
+                <VerticalStackLayout Padding="20,0,20,8" Spacing="10">
+                    <Label x:Name="DescricaoLabel" Style="{StaticResource Texto}" />
+                    <Label x:Name="EnderecoLabel" Style="{StaticResource Suave}" />
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10" Margin="0,4,0,0">
+                        <Button Text="📍 Como chegar"
+                                Style="{StaticResource BotaoSecundario}"
+                                Clicked="OnComoChegarClicked" />
+                        <Button Grid.Column="1"
+                                Text="WhatsApp"
+                                Style="{StaticResource BotaoSecundario}"
+                                Clicked="OnWhatsAppClicked" />
+                    </Grid>
+                </VerticalStackLayout>
+
+                <!-- Abas Serviços / Avaliações -->
+                <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,2" Margin="20,14,20,0">
+                    <Label x:Name="TabServicosLabel"
+                           Text="Serviços"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           Padding="0,12">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnServicosTapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label x:Name="TabAvaliacoesLabel"
+                           Grid.Column="1"
+                           Text="Avaliações"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           Padding="0,12">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnAvaliacoesTapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <BoxView x:Name="LinhaServicos" Grid.Row="1" HeightRequest="2" />
+                    <BoxView x:Name="LinhaAvaliacoes" Grid.Row="1" Grid.Column="1" HeightRequest="2" />
+                </Grid>
+
+                <VerticalStackLayout x:Name="ConteudoAba" Padding="20,16,20,32" Spacing="10" />
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <ActivityIndicator x:Name="Carregando"
+                           IsRunning="True"
+                           Color="{StaticResource Dourado}"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+    </Grid>
+</ContentPage>

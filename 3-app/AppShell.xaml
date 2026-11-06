@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="AgendAi.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:AgendAi.Views"
+    FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="False"
+    Shell.BackgroundColor="{StaticResource Fundo}"
+    Shell.ForegroundColor="{StaticResource Dourado}"
+    Shell.TitleColor="{StaticResource TextoClaro}"
+    Shell.TabBarBackgroundColor="{StaticResource Superficie}"
+    Shell.TabBarForegroundColor="{StaticResource Dourado}"
+    Shell.TabBarTitleColor="{StaticResource Dourado}"
+    Shell.TabBarUnselectedColor="{StaticResource TextoSuave}"
+    Title="AgendAí">
+
+    <!-- Acesso -->
+    <ShellContent
+        Title="Login"
+        ContentTemplate="{DataTemplate views:Login}"
+        Route="Login" />
+
+    <!-- Área do cliente -->
+    <TabBar Route="Cliente">
+        <ShellContent
+            Title="Home"
+            Icon="tab_home.png"
+            ContentTemplate="{DataTemplate views:Home}"
+            Route="Home" />
+        <ShellContent
+            Title="Buscar"
+            Icon="tab_busca.png"
+            ContentTemplate="{DataTemplate views:Buscar}"
+            Route="Buscar" />
+        <ShellContent
+            Title="Agenda"
+            Icon="tab_agenda.png"
+            ContentTemplate="{DataTemplate views:MeusAgendamentos}"
+            Route="MeusAgendamentos" />
+        <ShellContent
+            Title="Perfil"
+            Icon="tab_perfil.png"
+            ContentTemplate="{DataTemplate views:Perfil}"
+            Route="PerfilCliente" />
+    </TabBar>
+
+    <!-- Área do profissional / administrador -->
+    <TabBar Route="Profissional">
+        <ShellContent
+            Title="Agenda"
+            Icon="tab_agenda.png"
+            ContentTemplate="{DataTemplate views:AgendaProfissional}"
+            Route="Agenda" />
+        <ShellContent
+            Title="Perfil"
+            Icon="tab_perfil.png"
+            ContentTemplate="{DataTemplate views:Perfil}"
+            Route="PerfilProfissional" />
+    </TabBar>
+
+</Shell>

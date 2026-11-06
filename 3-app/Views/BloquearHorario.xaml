@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgendAi.Views.BloquearHorario"
+             BackgroundColor="{StaticResource Fundo}"
+             Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20,44,20,32" Spacing="12">
+
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12" Margin="0,0,0,8">
+                <Button Text="‹" Style="{StaticResource BotaoIcone}" Clicked="OnVoltarClicked" />
+                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                    <Label Text="Bloquear Horário" Style="{StaticResource TituloSerif}" FontSize="22" />
+                    <Label Text="Folga, almoço ou compromisso" Style="{StaticResource Suave}" />
+                </VerticalStackLayout>
+            </Grid>
+
+            <VerticalStackLayout x:Name="ProfissionalSecao" IsVisible="False" Spacing="6">
+                <Label Text="PROFISSIONAL" Style="{StaticResource Micro}" />
+                <Border Style="{StaticResource CampoBorda}">
+                    <Picker x:Name="ProfissionalPicker"
+                            Style="{StaticResource CampoSeletor}"
+                            Title="Escolha o profissional"
+                            ItemDisplayBinding="{Binding Nome}" />
+                </Border>
+            </VerticalStackLayout>
+
+            <Label Text="DATA" Style="{StaticResource Micro}" />
+            <Border Style="{StaticResource CampoBorda}">
+                <DatePicker x:Name="DataPicker" Style="{StaticResource CampoData}" />
+            </Border>
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="INÍCIO" Style="{StaticResource Micro}" />
+                    <Border Style="{StaticResource CampoBorda}">
+                        <TimePicker x:Name="InicioPicker" Style="{StaticResource CampoHora}" />
+                    </Border>
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="1" Spacing="6">
+                    <Label Text="FIM" Style="{StaticResource Micro}" />
+                    <Border Style="{StaticResource CampoBorda}">
+                        <TimePicker x:Name="FimPicker" Style="{StaticResource CampoHora}" />
+                    </Border>
+                </VerticalStackLayout>
+            </Grid>
+
+            <Label Text="MOTIVO (OPCIONAL)" Style="{StaticResource Micro}" />
+            <Border Style="{StaticResource CampoBorda}">
+                <Entry x:Name="MotivoEntry" Style="{StaticResource Campo}" Placeholder="Ex.: almoço, consulta" />
+            </Border>
+
+            <Label x:Name="ErroLabel" Style="{StaticResource TextoErro}" IsVisible="False" />
+
+            <Button x:Name="SalvarButton"
+                    Text="Bloquear horário"
+                    Style="{StaticResource BotaoPrimario}"
+                    Margin="0,10,0,0"
+                    Clicked="OnSalvarClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

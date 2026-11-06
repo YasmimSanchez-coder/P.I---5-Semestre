@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgendAi.Views.Perfil"
+             BackgroundColor="{StaticResource Fundo}"
+             Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24,64,24,32" Spacing="12">
+
+            <Border WidthRequest="96"
+                    HeightRequest="96"
+                    HorizontalOptions="Center"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 48"
+                    Background="{StaticResource GradienteDourado}">
+                <Label x:Name="AvatarLabel"
+                       FontSize="40"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource Fundo}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+            </Border>
+
+            <Label x:Name="NomeLabel" Style="{StaticResource TituloSerif}" HorizontalOptions="Center" Margin="0,8,0,0" />
+            <Label x:Name="EmailLabel" Style="{StaticResource Suave}" HorizontalOptions="Center" />
+
+            <Border HorizontalOptions="Center"
+                    Padding="14,5"
+                    BackgroundColor="{StaticResource DouradoFundo}"
+                    Stroke="{StaticResource DouradoEscuro}"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 12">
+                <Label x:Name="TipoLabel" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource Dourado}" />
+            </Border>
+
+            <Border Style="{StaticResource Cartao}" Margin="0,22,0,0">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnNotificacoesTapped" />
+                </Border.GestureRecognizers>
+                <Grid ColumnDefinitions="Auto,*,Auto,Auto" ColumnSpacing="12">
+                    <Label Text="🔔" FontSize="18" VerticalOptions="Center" />
+                    <Label Grid.Column="1" Text="Notificações" Style="{StaticResource TituloCartao}" VerticalOptions="Center" />
+                    <Border x:Name="BadgeNotificacoes"
+                            Grid.Column="2"
+                            IsVisible="False"
+                            VerticalOptions="Center"
+                            Padding="8,2"
+                            BackgroundColor="{StaticResource Dourado}"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 10">
+                        <Label x:Name="BadgeLabel" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource Fundo}" />
+                    </Border>
+                    <Label Grid.Column="3" Text="›" FontSize="22" TextColor="{StaticResource TextoSuave}" VerticalOptions="Center" />
+                </Grid>
+            </Border>
+
+            <Button Text="Sair"
+                    Style="{StaticResource BotaoContorno}"
+                    HeightRequest="50"
+                    Margin="0,18,0,0"
+                    Clicked="OnSairClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
